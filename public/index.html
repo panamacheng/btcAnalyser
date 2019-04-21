@@ -1,0 +1,191 @@
+<html>
+    <head>
+        <title>Block Reducer</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Begin import core css files -->
+        <link href="./assets/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <link href="./assets/css/angularjs-datetime-picker.css" rel="stylesheet"/>
+        <link href="./assets/css/ui-bootstrap-csp.css" rel="stylesheet">
+        <link href="./assets/css/bootstrap-material-design.min.css" rel="stylesheet">
+        <!-- End import core css files -->
+        
+        <link href="./components/_base/_style/custom.style.css" rel="stylesheet">
+        <!-- Import favicon file -->
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    </head>
+    <body>  
+        <div class="page-wrapper chiller-theme toggled">
+            <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+                <i class="fa fa-bars"></i>
+            </a>
+            <nav id="sidebar" class="sidebar-wrapper">
+                
+                <div class="sidebar-content">
+                    <div class="sidebar-brand">
+                        <a href="#">
+                            <strong> BLOCK REDUCER </strong>
+                        </a>
+                        <div id="close-sidebar">
+                            <i class="fa fa-times"></i>
+                        </div>
+                    </div>
+                    <div class="sidebar-header">
+                        <div class="user-pic">
+                            <img class="img-responsive img-rounded" style="height:60px;" src="./assets/img/user.jpg" alt="User picture">
+                        </div>
+                        <div class="user-info">
+                                <p id="username"></p>
+                                <strong></strong>
+                            </span>
+                            <span class="user-role" id="user-role"></span>
+                            <span class="user-status">
+                                <i class="fa fa-circle"></i>
+                                <span>Online</span>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- sidebar-header  -->
+                    <div class="sidebar-search">
+                        <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control search-menu" placeholder="Search...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- sidebar-search  -->
+                    <div class="sidebar-menu">
+                        <ul>
+                            <li class="header-menu">
+                                <span>General</span>
+                            </li>
+                            <li class="sidebar-dropdown active" id="block_chart">
+                                
+                                <a href="#" >
+                                        <i class="fa fa-line-chart"></i>
+                                        <span>Block Charts</span>
+                                        <span class="badge badge-pill badge-warning">New</span>
+                                </a>
+                                <div class="sidebar-submenu" style="display:block;">
+                                    <ul>
+                                        <li>
+                                            <a ui-sref="price-chart" onmouseover="" />
+                                                Price Chart
+                                                <span class="badge badge-pill badge-success">Pro</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="volume-chart" onmouseover="" />
+                                                Volume Chart
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="current-trade-chart" onmouseover=""/>
+                                                Current Trade Chart
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            
+                            <li class="header-menu">
+                                <span>User management</span>
+                            </li>
+                            <li>
+                                <a ui-sref="fft-chart" onmouseover="" >
+                                    <i class="fa fa-bar-chart"></i>
+                                    <span>OHLC Chart</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ui-sref="hidden-order" onmouseover="" >
+                                    <i class="fa fa-area-chart"></i>
+                                    <span>Hidden Order</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a ui-sref="account" onmouseover="" >
+                                    <i class="fa fa-user"></i>
+                                    <span> User account</span>
+                                    <span class="badge badge-pill badge-primary">User</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/login" target="_self">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Sign out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- sidebar-menu  -->
+                </div>
+                <!-- sidebar-content  -->
+                <div class="sidebar-footer" align="right">
+                    <a href="#"> Block Reducer Website version 1.0.0</a>
+                </div>
+            </nav>
+            <!-- sidebar-wrapper  -->
+            <main class="page-content">
+                <div class="flash-message" ng-if="flash">
+                    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+                </div>
+                <div class="container-fluid">
+                    <div ui-view></div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Begin import core javascript files -->
+        <script src='./assets/js/angular.min.js'></script>
+        <script src='./assets/js/angular-ui-router.min.js'></script>
+        <script src='./assets/js/angular-sanitize.min.js'></script>
+        <script src='./assets/js/angular-animate.min.js'></script>
+        <script src='./assets/js/angularjs-datetime-picker.min.js'></script>
+        <script src='./assets/js/ui-bootstrap.js'></script>
+        <script src='./assets/js/ui-bootstrap-tpls.js'></script>
+        
+        <!-- Begin import Graph javascript lib files -->
+        <script src='./assets/js/d3.min.js'></script>
+        <script src='./assets/js/plotly-basic.js'></script>
+        <script src='./assets/js/ploty-lastest.js'></script>
+        <!-- End import Graph javascript lib files -->
+        
+        <script src='./assets/js/jquery.min.js'></script>
+        <script src='./assets/js/popper.min.js'></script>
+        <script src='./assets/js/bootstrap-material-design.js'></script>
+        <script src='./components/_base/_style/custom.style.js'></script>
+        <!-- End import core javascript files -->
+
+        
+
+        <!-- Begin import custom javascript files -->
+        <script src='./components/app.js'></script>
+        <script src='./components/_base/_services/user.service.js'></script>
+        <script src='./components/_base/_services/flash.service.js'></script>
+        <script src='./components/_base/_directives/graph.directive.js'></script>
+        <script src='./components/sections/home/controllers/home.js'></script>
+        <script src='./components/sections/account/controllers/account.js'></script>
+        <script src='./components/sections/account/controllers/change-password.js'></script>
+        <script src='./components/sections/charts/controllers/price.js'></script>
+        <script src='./components/sections/charts/controllers/volume.js'></script>
+        <script src='./components/sections/charts/controllers/trade.js'></script>
+        <script src='./components/sections/fft/controllers/fft.js'></script>
+        <script src='./components/sections/hidden-order/controllers/hidden-order.js'></script>
+        <script src='./components/sections/admin/main/controllers/main.js'></script>
+        <script src='./components/sections/admin/users/controllers/users.js'></script>
+        <script src='./components/sections/admin/estimate/controllers/estimate.js'></script>
+        <script src='./components/sections/admin/estimate-chart/controllers/estimate-chart.js'></script>
+        <!-- End import custom javascript files -->
+
+
+        <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    </body>
+</html>

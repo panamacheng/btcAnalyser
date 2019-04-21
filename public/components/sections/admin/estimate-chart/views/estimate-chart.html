@@ -1,0 +1,178 @@
+<style>
+    th {
+        text-align: center;
+    }
+    td {
+        text-align: center;
+    }
+
+    i {
+        font-size: 20px !important;
+        font-weight: bold;
+    }
+    #mytable input {
+        width: 100%;
+    }
+</style>
+<div class="card pmd-card">
+    <div class="pmd-tabs pmd-tabs-dark" scroll="true">
+        <ul class="nav nav-tabs bg-dark">
+            <li class="nav-item" role="presentation">
+                <a ng-click="toMain()" href="#" class="nav-link" role="tab" data-toggle="tab"> 
+                    main
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toChart()" href="#" class="nav-link active"  role="tab" data-toggle="tab">
+                    chart
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toUsers()" href="#" class="nav-link" role="tab" data-toggle="tab"> 
+                    users
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toEstimate()" href="#" class="nav-link" role="tab" data-toggle="tab">
+                    estimate
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="bootstrap snippet">
+    <div class="row pt-4">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-secondary text-white pt-0 pb-0">
+                        <div class="row">
+                        <div class="col-md-3 mb-0" style="vertical-align:center;">
+                            <p><h4><strong> Price - FFT Chart </strong></h4></p> 
+                        </div>
+                        <div class="col-md-9">
+                            <form  ng-submit="CustomizeChart(data)" class="row mb-0">
+                                <div class="select-candle form-group mb-12 col-sm-3">
+                                    <select ng-model="data.candle" class="form-control" required>
+                                        <option ng-repeat="selectRow in arrayCandles" value="{{selectRow.id}}">
+                                            {{selectRow.value}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="start-time col-sm-3">
+                                    <div class="input-group mb-0 pt-2">
+                                        <input ng-model="data.startTime" class="text-white form-control" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" required>
+                                    </div>
+                                </div>
+                                <div class="end-time col-sm-3">
+                                    <div class="input-group mb-0 pt-2">
+                                        <input ng-model="data.endTime" class=" text-white form-control" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" required>
+                                    </div>
+                                </div>
+                                <div class="button-group col-sm-3">
+                                    <div class="input-group mt-3">
+                                        <button type="submit" class="btn btn-info">
+                                            <h6><strong> Customize </strong></h6> 
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    <div class="row" align="center">
+                        <div class="col-md-12">
+                                <div id="plotly-div" style="width:950px; height: 400px;"></div>
+                        </div>
+                        <div class="col-md-12">
+                                <div id="myFFTDiv" style="width:1030px; height: 300px;"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="row" >
+                    <div class="col-md-12">
+                        <button type="button" style="float:right;margin-bottom: 10px;margin-right: 20px;" class="btn btn-info " ng-click="AddEstimate()">
+                            <i class="fa fa-plus"></i> &nbsp; Add Estimate
+                        </button>
+                        <button type="button" style="float:left; margin-bottom: 10px;margin-left: 20px;" class="btn btn-danger " ng-click="ClearData()">
+                            <i class="fa fa-eraser"></i> &nbsp; Clear Data
+                        </button>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <form ng-submit="GenerateChart()">
+                                <table id="mytable" class="table table-bordered">
+                                    <thead>
+                                        <th style="width:10%; text-align:center;">No</th>
+                                        <th style="width:25%;">Price</th>
+                                        <th style="width:25%;">Time</th>
+                                        <th style="width:40%;">Actions</th>                     
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="row in estimate">
+                                            <td class="form-group">
+                                                <p class="form-control"> {{ $index + 1 }} </p>
+                                            </td>
+                                            <td class="form-group">
+                                                <input name="price{{$index}}" ng-model="row.price" type="number" class="form-control" ng-disabled="!enabledEdit[{{$index}}]" required="true"/>
+                                            </td>
+                                            <td class="form-group">
+                                                <input name="time{{$index}}" ng-model="row.time" type="number" class="form-control" ng-disabled="!enabledEdit[{{$index}}]" required="true"/>
+                                            </td>
+                                            <td >
+                                                <div class="buttons">
+                                                    <button class="btn btn-primary" ng-click="EditEstimate($index)">
+                                                        <i class="fa fa-edit"></i> 
+                                                    </button>
+                                                    <button class="btn btn-danger" ng-click="DeleteEstimate($index)">
+                                                        <i class="fa fa-trash"></i> 
+                                                    </button>
+                                                </div>  
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-line-chart"></i> &nbsp;Generate Chart 
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- <div class="modal-dialog modal-lg modal-dialog-centered"> -->
+    <div class="modal-dialog" style="margin-left: 5% !important;" >
+        <div class="modal-content" style="width: 340%;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Generated Chart</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12" align="center">
+                    <!-- <line-plot graph-plots=graphPlots style="width:1000px; height: 700px;"></line-plot> -->
+                    <div id="plotly-combined-modal" style="width:1300px; height: 350px;"></div>
+                </div>
+
+                <div class="col-md-12" align="center">
+                    <!-- <line-plot graph-plots=graphPlots style="width:1000px; height: 700px;"></line-plot> -->
+                    <div id="ploty-fft-modal" style="width:1300px; height: 450px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

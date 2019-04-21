@@ -1,0 +1,81 @@
+<style>
+    .my-card {
+        position:absolute;
+        left:40%;
+        top:-20px;
+        border-radius:50%;
+    }
+</style>
+
+<div class="card pmd-card">
+    <div class="pmd-tabs pmd-tabs-dark" scroll="true">
+        <ul class="nav nav-tabs bg-dark">
+            <li class="nav-item" role="presentation">
+                <a ng-click="toMain()" href="#" class="nav-link active" role="tab" data-toggle="tab"> 
+                    main
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toChart()" href="#" class="nav-link"  role="tab" data-toggle="tab">
+                    chart
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toUsers()" href="#" class="nav-link" role="tab" data-toggle="tab"> 
+                    users
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toEstimate()" href="#" class="nav-link" role="tab" data-toggle="tab">
+                    estimate
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<section class="bootstrap snippet mt-5">
+    <div class="container">
+        <div class="row pt-lg-5">
+            <div class="col-md-4 pt-lg-5">
+                <div class="card border-info shadow-lg mx-sm-1 p-3">
+                    <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-users" aria-hidden="true"></span></div>
+                    <div class="text-info text-center mt-5"><h2>User Manage</h2></div>
+                    <div class="text-info text-center mt-2"><h1>234</h1></div>
+                    <div class="card-body text-info text-center mt-4">
+                        <h5>You can see all of your users with table and manage his details with "Edit" button.</h5>
+                    </div>
+                    <div class="card-footer text-info text-center">
+                        <button class="btn btn-outline-info" ng-click="toUsers()">Go Page</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pt-lg-5">
+                <div class="card border-success shadow-lg mx-sm-1 p-3">
+                    <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-braille" aria-hidden="true"></span></div>
+                    <div class="text-success text-center mt-5"><h2>Estimate Mange</h2></div>
+                    <div class="text-success text-center mt-2"><h1>9332</h1></div>
+                    <div class="card-body text-success text-center mt-4">
+                        <h5>You can see all of your estimates with table and manage your estimates.</h5>
+                    </div>
+                    <div class="card-footer text-success text-center">
+                        <button class="btn btn-outline-success" ng-click="toEstimate()">Go Page</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pt-lg-5">
+                <div class="card border-danger shadow-lg mx-sm-1 p-3">
+                    <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-chart-area" aria-hidden="true"></span></div>
+                    <div class="text-danger text-center mt-5"><h2>Estimate Chart</h2></div>
+                    <div class="text-danger text-center mt-2"><h1>346</h1></div>
+                    <div class="card-body text-danger text-center mt-4">
+                        <h5>You can test all of your estimates with chart and manage your estimates.</h5>
+                    </div>
+                    <div class="card-footer text-danger text-center">
+                        <button class="btn btn-outline-danger" ng-click="toChart()">Go Page</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

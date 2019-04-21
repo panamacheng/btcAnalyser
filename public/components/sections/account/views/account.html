@@ -1,0 +1,126 @@
+<style>  
+    .my-card {
+        position:absolute;
+        left:35%;
+        top:-20px;
+        border-radius: 20%, 20%, 20%, 20%;
+    }
+</style> 
+
+<div class="card pmd-card">
+    <div class="pmd-tabs pmd-tabs-dark" scroll="true">
+        <ul class="nav nav-tabs bg-primary">
+            <li class="nav-item" role="presentation">
+                <a ng-click="toAccInfo()" href="#" class="nav-link active" role="tab" data-toggle="tab"> 
+                    Profile
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toAccChange()" class="nav-link" href="#about-scrollable" aria-controls="about" role="tab" data-toggle="tab">
+                    New Password
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<section class="bootstrap snippet">
+    <div class="container pt-lg-5">
+        <div class="col-md-12 pt-lg-5 container-fluid">
+            <div class="card border-primary shadow-lg mx-sm-1 p-3">
+                <div class="card border-primary shadow text-center text-primary p-3 my-card" >
+                    <span aria-hidden="true">
+                        <h3> <i class="fa fa-user" ></i> Your Account Information</h3>
+                    </span>
+                </div>
+                <div class="card-body text-center container mt-4">
+                    <div class="col md-12">
+                        <form class="text-center text-primary pt-5">
+                            <div class="form-group" align="center">
+                                <div class="input-group input-group-lg  col-md-8">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg">First Name : &nbsp;</span>
+                                    </div>
+                                    <input ng-model="vm.user.firstName" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" ng-disabled="all" required >
+                                </div>
+                            </div> 
+                            <div class="form-group" align="center">
+                                <div class="input-group input-group-lg  col-md-8">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg">Last Name : &nbsp;</span>
+                                    </div>
+                                    <input ng-model="vm.user.lastName" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" ng-disabled="all" required >
+                                </div>
+                            </div>
+                            <div class="form-group" align="center">
+                                <div class="input-group input-group-lg  col-md-8">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg">User Name : &nbsp;</span>
+                                    </div>
+                                    <input ng-model="vm.user.username" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" ng-disabled="all" required >
+                                </div>
+                            </div> 
+                            <div class="form-group" align="center">
+                                <div class="input-group input-group-lg  col-md-8">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg">Current Email : &nbsp;</span>
+                                    </div>
+                                    <input ng-model="vm.user.email" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" ng-disabled="all" required >
+                                </div>
+                            </div> 
+                            <div class="form-group" align="center">
+                                <div class="input-group input-group-lg col-md-8">
+                                    <div class="form-group">
+                                        <button  class="btn btn-primary btn-lg" ng-click="EditFields()"  title="Edit">
+                                            Edit 
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button  ng-disabled="all" class="btn btn-primary btn-lg" ng-click="vm.SaveUser()" title="Save">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>  
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
+</section>
+
+
+
+<!-- <section class="bootstrap snippet">
+    <div class="container">
+        <center><h1>Your Account Information</h1></center><hr>
+        <form method="post" class="row">
+            <div class="form-group col-sm-12">
+                <label for="firstName">First name</label>
+                <input type="text" id="firstName" class="form-control" ng-model="vm.user.firstName" ng-disabled="all" required />
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="lastName">Last name</label>
+                <input type="text" id="lastName" class="form-control" ng-model="vm.user.lastName" ng-disabled="all" required />
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" ng-model="vm.user.username" ng-disabled="all" required />
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" ng-model="vm.user.email" ng-disabled="all" required/>
+            </div>
+        
+            <div class="form-group col-sm-6">
+                <button  class="btn btn-outline-primary" ng-click="EditFields()"  title="Edit"><span class="fa fa-edit"></span>Edit</button>
+            </div>
+            <div class="form-group col-sm-6">
+                <button  ng-disabled="all" class="btn btn-outline-primary" ng-click="vm.SaveUser()" title="Save"><span class="fa fa-edit"></span>Save</button>
+            </div>
+        </form>
+    </div>
+</section> -->
+
+       
+ 

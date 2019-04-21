@@ -1,0 +1,90 @@
+<div class="card pmd-card">
+    <div class="pmd-tabs pmd-tabs-dark" scroll="true">
+        <ul class="nav nav-tabs bg-dark">
+            <li class="nav-item" role="presentation">
+                <a ng-click="toMain()" href="#" class="nav-link" role="tab" data-toggle="tab"> 
+                    main
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toChart()" href="#" class="nav-link"  role="tab" data-toggle="tab">
+                    chart
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toUsers()" href="#" class="nav-link" role="tab" data-toggle="tab"> 
+                    users
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a ng-click="toEstimate()" href="#" class="nav-link active" role="tab" data-toggle="tab">
+                    estimate
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<section class="bootstrap snippet mt-4">
+    <div class="card shadow-lg col-md-12">
+        <div class="card bg-dark">
+            <div class="card-body text-white text-center">
+                <h4><strong> ESTIMATE MANAGEMENT </strong></h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="input-group text-center input-group-lg col-md-4" align="center">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">User Name : &nbsp;</span>
+                        </div>
+                        <select  ng-model="current.userid" ng-change="vm.GetDateTime(current.userid)" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            <option ng-repeat="n in users"  value="{{n.id}}">{{n.username}}</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group text-center input-group-lg  col-md-4" align="center">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">Estimate Date : &nbsp;</span>
+                        </div>
+                        <select ng-model="current.datetime" class="form-control"  aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                            <option ng-repeat="m in dateTimes"  value="{{m.saveDate}}">{{m.saveDate}}</option>
+                        </select>
+                    </div>
+                   
+                    <div class="input-group input-group-lg col-md-4" align="center">
+                        <div class="form-group text-center pt-3">
+                            <button ng-click="vm.GetEstimateData(current)"  class="btn btn-outline-danger" title="view">
+                                <i class="fa fa-eye"></i>&nbsp; View Datas 
+                            </button>
+                        </div>
+                    </div>
+
+                    <table class="table mt-3">
+                        <thead class="thead-dark text-center">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">price</th>
+                                <th scope="col">time</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr ng-repeat="n in data">
+                                <th scope="row">
+                                    {{$index+1}}
+                                </th>
+                                <th scope="row">
+                                   {{n.close}}
+                                </th>
+                                <th scope="row">
+                                    {{n.time}}
+                                </th>
+                            <tr>
+                        </tbody>
+                    </table>                    
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>

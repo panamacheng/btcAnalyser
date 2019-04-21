@@ -1,0 +1,41 @@
+<section class="bootstrap snippet">
+    <div class="row card-columns">
+        <div class="card shadow-lg col-md-12">
+            <div class="card bg-dark">
+                <div class="card-body text-white row">
+                    <div class="col-md-7">
+                        <h4><strong> Price - Timestamp </strong></h4>
+                    </div>
+                    <div class="col-md-5">
+                        <form ng-submit="CustomizeChart()" class="row " style="margin-bottom:0px!important;">
+                            <div class="start-time col-sm-4">
+                                <div class="input-group mb-12">
+                                    <input ng-model="startTime" class="text-white form-control" datetime-picker date-format="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                            </div>
+                            <div class="end-time col-sm-4">
+                                <div class="input-group mb-12">
+                                    <input ng-model="endTime" class=" text-white form-control" datetime-picker date-format="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                            </div>
+                            <div class="button-group col-sm-4">
+                                <div class="input-group mb-12">
+                                    <button type="submit" class="btn btn-primary">
+                                        <h6><strong> Customize Chart </strong></h6>  
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body text-center col-sm-12">
+                <div class="graph-container" >
+                    <!-- This is where we are going to put our custom directive -->
+                    <line-plot graph-plots=graphPlots style="width:1500%; height:700%"></line-plot>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

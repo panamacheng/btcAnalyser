@@ -1,0 +1,42 @@
+<section class="bootstrap snippet">
+    <div class="row card-columns">
+        <div class="card bg-light col-md-12">
+            <div class="card bg-dark col-md-12">
+                <div class="row">
+                    <div class="card-title col-md-7">
+                        <p ui-sref="price-chart" style="vertical-align:center; ">
+                            <h3 style="color:white;"><strong>Hidden - Timestamp</strong></h3>
+                        </p>
+                    </div>
+                    <div class="card-body text-center col-md-5">
+                        <form ng-submit="CustomizeChart()" class="row" style="margin-bottom:0px!important;">
+                            <div class="start-time col-sm-4">
+                                <div class="input-group mb-12">
+                                    <input ng-model="startTime" class="form-control text-white" datetime-picker date-format="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                            </div>
+                            <div class="end-time col-sm-4">
+                                <div class="input-group mb-12">
+                                    <input ng-model="endTime" class="form-control text-white" datetime-picker date-format="yyyy-MM-dd HH:mm:ss">
+                                </div>
+                            </div>
+                            <div class="button-group col-sm-4">
+                                <div class="input-group mb-12">
+                                    <button type="submit" class="btn btn-success"><strong> Customize Chart </strong></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body text-center col-sm-12">
+                <div class="graph-container" align="center">
+                    <!-- This is where we are going to put our custom directive -->
+                    <div id="price-isoDate-chart" style="width:1400px; height: 300px;"></div>
+                    <div id="hidden-isoDate-chart" style="width:1400px; height: 400px;"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
